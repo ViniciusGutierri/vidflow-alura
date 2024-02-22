@@ -28,3 +28,18 @@ async function buscarEMostrarVideos() {
 }
 
 buscarEMostrarVideos();
+
+const barraPesquisa = document.querySelector('.pesquisar__input');
+
+barraPesquisa.addEventListener('input', filtrarPesquisa);
+
+function filtrarPesquisa() {
+    const videos = document.querySelectorAll('.videos__item');
+    const valorFiltro = barraPesquisa.value.toLowerCase();
+  
+    videos.forEach((video) => {
+      const titulo = video.querySelector('.titulo-video').textContent.toLowerCase();
+  
+      video.style.display = valorFiltro ? titulo.includes(valorFiltro) ? 'block' : 'none' : 'block';
+    });
+}
